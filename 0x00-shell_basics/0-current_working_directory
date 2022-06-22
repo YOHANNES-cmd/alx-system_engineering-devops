@@ -1,2 +1,4 @@
+1.emacs 1-listit
 #!/bin/bash
+ls
 pwd
