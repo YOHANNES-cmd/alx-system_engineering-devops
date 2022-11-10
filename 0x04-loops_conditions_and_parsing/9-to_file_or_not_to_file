@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
-# displays information about the School file
+# Gives description about the school file
 
-filename="School"
+FILE="school"
 
-if [ -e $filename ]
+if [ -e "$FILE" ]
 then
     echo "school file exists"
-    if [ -s $filename ]
+    if [ ! -s "$FILE" ]
     then
-        echo "school file is not empty"
-    else
         echo "school file is empty"
+    else
+        echo "school file is not empty"
     fi
-    if [ -f $filename ]
+    if [ -f "$FILE" ]
     then
         echo "school is a regular file"
     fi
