@@ -108,13 +108,11 @@ Requirements:
 -   Directory: `0x06-regular_expressions`
 -   File: `1-repetition_token_0.rb`
 
- Done? Help Check your code Get a sandbox QA Review
 
 ### 2\. Repetition Token #1
 
 mandatory
 
-Score: 0.00% (Checks completed: 0.00%)
 
 ![](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2020/9/c59ff11db195d5cf17d1790a5141ae2f234786d2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20220119%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220119T135435Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=a3188883f1a5f441886a5a69002ef29d0ea4719b0134a5af8405a6be06848369)
 
@@ -129,7 +127,7 @@ Requirements:
 -   Directory: `0x06-regular_expressions`
 -   File: `2-repetition_token_1.rb`
 
- Done? Help Check your code Get a sandbox QA Review
+
 
 ### 3\. Repetition Token #2
 
@@ -150,13 +148,12 @@ Requirements:
 -   Directory: `0x06-regular_expressions`
 -   File: `3-repetition_token_2.rb`
 
- Done? Help Check your code Get a sandbox QA Review
+
 
 ### 4\. Repetition Token #3
 
 mandatory
 
-Score: 33.33% (Checks completed: 33.33%)
 
 ![](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2020/9/f8dbcb9cf5ae569a8645027dc46e81cb372ce28e.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20220119%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220119T135435Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=0292a256c5f887345e59961db7a82441b2e11936a25ef003ae845d5368e0aec5)
 
@@ -172,13 +169,11 @@ Requirements:
 -   Directory: `0x06-regular_expressions`
 -   File: `4-repetition_token_3.rb`
 
- Done? Help Check your code Get a sandbox QA Review
 
 ### 5\. Not quite HBTN yet
 
 mandatory
 
-Score: 0.00% (Checks completed: 0.00%)
 
 Requirements:
 
@@ -213,7 +208,7 @@ $
 
 mandatory
 
-Score: 0.00% (Checks completed: 0.00%)
+
 
 This task is brought to you by a professional advisor [Neha Jain](https://alx-intranet.hbtn.io/rltoken/GqwvXAvTXR_JXqyTvZ4AzQ "Neha Jain"), Senior Software Engineer at LinkedIn.
 
@@ -242,13 +237,11 @@ sylvain@ubuntu$
 -   Directory: `0x06-regular_expressions`
 -   File: `6-phone_number.rb`
 
- Done? Help Check your code Get a sandbox QA Review
 
 ### 7\. OMG WHY ARE YOU SHOUTING?
 
 mandatory
 
-Score: 0.00% (Checks completed: 0.00%)
 
 ![](https://alx-intranet.hbtn.io/images/contents/sysadmin/projects/78/shouting.jpg)
 
@@ -280,8 +273,6 @@ sylvain@ubuntu$
 ### 8\. Textme
 
 #advanced
-
-Score: 0.00% (Checks completed: 0.00%)
 
 This exercise was prepared for you by [Guillaume Plessis](https://alx-intranet.hbtn.io/rltoken/2Rwwb9pSGKXSp3b3BcqkAw "Guillaume Plessis"), VP of Infrastructure at TextMe. It is something he uses daily. You can thank Guillaume for his project [on Twitter](https://alx-intranet.hbtn.io/rltoken/Vz-iLl3_Of797s9TsjCxJQ "on Twitter").
 
