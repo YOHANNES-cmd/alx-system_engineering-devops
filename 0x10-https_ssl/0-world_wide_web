@@ -1,29 +1,44 @@
 #!/usr/bin/env bash
-# Domain info fetcher
-# Fetches information about an array of subdomains.
-# 	Usage: fetch_subdomains domain subdomains
-# 	Example 1: fetch_subdomains google.com mail
-# 	Example 2: fetch_subdomains google.com 'www images maps mail'
-fetch_subdomains() {
-	domain="$1"
-	subdomains=()
-	readarray -t subdomains < <(echo "$2" | tr ' ' '\n')
-	for ((i = 0; i < "${#subdomains[@]}"; i++)) do
-		subdomain="${subdomains[i]}"
-		output_awk='{print "The subdomain", "'
-		output_awk="$output_awk$subdomain is a"
-		output_awk="$output_awk\", \$7, \"record and points to\", \$8}"
-		dig "$subdomain.$domain" \
-			| grep -A1 'ANSWER SECTION:' \
-			| tr '\n' ' ' \
-			| awk "$output_awk"
-	done
+# Configure my domain zone:
+# www --> 83241-lb-01 54.237.56.55
+# web-01 --> 83241-web-01 100.25.136.186
+# web-02 --> 83241-web-02 100.26.136.34
+
+# -- To be evaluated --
+# domain_information () {
+#     line=$(dig "$2"."$1" | grep -A1 'ANSWER SECTION:' | tr '\t' '\n' | tail -2 | tr '\n' ' ')
+#     echo "$2 $line" | awk '{print "The subdomain " $1 " is a " $2 " record and points to " $3}'
+# }
+
+# if [ "$#" == 1 ]
+# then
+#   domain_information "$1" "www"
+#   domain_information "$1" "lb-01"
+#   domain_information "$1" "web-01"
+#   domain_information "$1" "web-02"
+# elif [ "$#" == 2 ]
+# then
+#   domain_information "$1" "$2"
+# fi
+#-- To be evaluated --
+
+subdomains_all=( "www" "lb-01" "web-01" "web-02" )
+
+runDig () {
+    subdomain=$1
+    domain=$2
+
+    dig "$subdomain.$domain" | grep -A1 'ANSWER SECTION:' | tail -1 | awk -v s="$subdomain" 'BEGIN { FS = " " } ; { print "The subdomain " s " is a " $4 " record and points to " $5 }'
 }
 
-if [ "${#BASH_ARGV[@]}" -ge '2' ]; then
-	fetch_subdomains "$1" "$2"
-elif [ "${#BASH_ARGV[@]}" -ge '1' ]; then
-	fetch_subdomains "$1" "www lb-01 web-01 web-02"
-else
-	exit
+if [ $# -eq 1 ]; then
+    domain="$1"
+    for i in "${subdomains_all[@]}"
+    do
+	runDig "$i" "$domain"
+    done
+elif [ $# -eq 2 ]; then
+    domain="$1"
+    subdomain="$2"
+    runDig "$subdomain" "$domain"
 fi
