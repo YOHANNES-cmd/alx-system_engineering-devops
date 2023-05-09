@@ -1,14 +1,11 @@
 #!/usr/bin/python3
-
+'''A module containing functions for working with the Reddit API.
 '''
-A module containing functions for working with the Reddit API.
-'''
-
 import requests
 
+
 def sort_histogram(histogram={}):
-    '''
-    Sorts and prints the given histogram.
+    '''Sorts and prints the given histogram.
     '''
     histogram = list(filter(lambda kv: kv[1], histogram))
     histogram_dict = {}
@@ -31,18 +28,22 @@ def sort_histogram(histogram={}):
         histogram
     )))
     if res_str:
-        return res_str
+        print(res_str)
 
 
-def count_words(subreddit, word_list, histogram=None, n=0, after=None):
-    '''
-    Counts the number of times each word in a given wordlist
+def count_words(subreddit, word_list, histogram=[], n=0, after=None):
+    '''Counts the number of times each word in a given wordlist
     occurs in a given subreddit.
     '''
-    if histogram is None:
-        histogram = [(word, 0) for word in word_list]
     api_headers = {
-        'User-Agent': 'my_bot/0.1'  # Replace with your own User-Agent string
+        'Accept': 'application/json',
+        'User-Agent': ' '.join([
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
+            'AppleWebKit/537.36 (KHTML, like Gecko)',
+            'Chrome/97.0.4692.71',
+            'Safari/537.36',
+            'Edg/97.0.1072.62'
+        ])
     }
     sort = 'hot'
     limit = 30
@@ -58,18 +59,22 @@ def count_words(subreddit, word_list, histogram=None, n=0, after=None):
         headers=api_headers,
         allow_redirects=False
     )
+    if not histogram:
+        word_list = list(map(lambda word: word.lower(), word_list))
+        histogram = list(map(lambda word: (word, 0), word_list))
     if res.status_code == 200:
         data = res.json()['data']
         posts = data['children']
-        titles = [post['data']['title'] for post in posts]
-        histogram = [
-            (word, count + sum(
-                txt.lower().split().count(word)
-                for txt in titles
-            )) for (word, count) in histogram
-        ]
+        titles = list(map(lambda post: post['data']['title'], posts))
+        histogram = list(map(
+            lambda kv: (kv[0], kv[1] + sum(list(map(
+                lambda txt: txt.lower().split().count(kv[0]),
+                titles
+            )))),
+            histogram
+        ))
         if len(posts) >= limit and data['after']:
-            return count_words(
+            count_words(
                 subreddit,
                 word_list,
                 histogram,
@@ -77,9 +82,6 @@ def count_words(subreddit, word_list, histogram=None, n=0, after=None):
                 data['after']
             )
         else:
-            return histogram
-
-
-if __name__ == '__main__':
-    print(__doc__)
-
+            sort_histogram(histogram)
+    else:
+        return
