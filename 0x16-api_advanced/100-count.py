@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-'''A module containing functions for working with the Reddit API.
-'''
+
+'''A module containing functions for working with the Reddit API.'''
+
 import requests
 
 
 def sort_histogram(histogram={}):
-    '''Sorts and prints the given histogram.
-    '''
+    '''Sorts and prints the given histogram.'''
     histogram = list(filter(lambda kv: kv[1], histogram))
     histogram_dict = {}
     for item in histogram:
@@ -31,10 +31,9 @@ def sort_histogram(histogram={}):
         print(res_str)
 
 
-def count_words(subreddit, word_list, histogram=[], n=0, after=None):
+def count_words(subreddit, word_list, histogram=None, n=0, after=None):
     '''Counts the number of times each word in a given wordlist
-    occurs in a given subreddit.
-    '''
+    occurs in a given subreddit.'''
     api_headers = {
         'Accept': 'application/json',
         'User-Agent': ' '.join([
@@ -47,6 +46,9 @@ def count_words(subreddit, word_list, histogram=[], n=0, after=None):
     }
     sort = 'hot'
     limit = 30
+    if histogram is None:
+        word_list = list(map(lambda word: word.lower(), word_list))
+        histogram = list(map(lambda word: (word, 0), word_list))
     res = requests.get(
         '{}/r/{}/.json?sort={}&limit={}&count={}&after={}'.format(
             'https://www.reddit.com',
@@ -59,9 +61,6 @@ def count_words(subreddit, word_list, histogram=[], n=0, after=None):
         headers=api_headers,
         allow_redirects=False
     )
-    if not histogram:
-        word_list = list(map(lambda word: word.lower(), word_list))
-        histogram = list(map(lambda word: (word, 0), word_list))
     if res.status_code == 200:
         data = res.json()['data']
         posts = data['children']
