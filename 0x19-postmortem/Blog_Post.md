@@ -1,7 +1,7 @@
 Postmortem: Web Stack Outage Incident
 
 
-(https://i.pinimg.com/originals/cc/e5/3b/cce53b95907bc6a657c0b5f6de78d757.png)
+![post_mortem](post-mortem.jpg)
 
 When Technology Takes a Break: A Tale of Misconfigured Load Balancers
 
