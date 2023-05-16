@@ -1,4 +1,10 @@
 Postmortem: Web Stack Outage Incident
+
+
+![post_mortem](image.png)
+
+When Technology Takes a Break: A Tale of Misconfigured Load Balancers
+
 Issue Summary:
 Duration: Start Time - 2023-05-13 1:00 PM (EAT), End Time - 2023-05-13 2:30 PM (EAT)
 Impact: The web application service experienced a complete outage during the incident, resulting in a total loss of service for all users. Approximately 100% of the users were affected by the outage.
@@ -13,20 +19,22 @@ The incident was escalated to the network engineering team to review the load ba
 The misconfigured load balancer was identified and rectified.
 The incident was resolved by reconfiguring the load balancer to ensure proper routing of incoming requests.
 Root Cause and Resolution:
-Root Cause: The root cause of the outage was determined to be a misconfigured load balancer. The misconfiguration caused incoming requests to be improperly routed, resulting in the application servers not receiving any traffic.
-Resolution: The misconfigured load balancer was reconfigured to ensure correct routing of incoming requests. The necessary adjustments were made to the load balancing algorithm and backend server configuration to restore proper functionality.
+Root Cause: It turns out our load balancer wanted to try its hand at stand-up comedy, resulting in a misconfiguration that led to the web application's outage. It hilariously mishandled incoming requests, leaving our application servers starving for attention.
+
+Resolution: Our talented engineers took center stage, reconfiguring the load balancer with precision and finesse. They whipped it back into shape, ensuring that incoming requests were distributed properly and our application servers received the love they deserved.
+
 Corrective and Preventative Measures:
+
 Improvements/Fixes:
-Enhance load balancer configuration management processes to prevent misconfigurations.
-Implement regular load balancer health checks and monitoring to detect configuration issues promptly.
-Establish automated tests for load balancer configurations during deployment pipelines.
+
+1. Let's have a serious chat with our load balancer, teaching it the importance of its role and the impact of its pranks. No more comedy club aspirations, please!
+2. Implement rigorous load balancer configuration management processes, leaving no room for accidental misconfigurations or impromptu stand-up routines.
+3. Introduce automated tests to validate load balancer configurations during deployment. Let's ensure our load balancer practices safe humor, leaving the comedy to the professionals.
+
 Tasks to Address the Issue:
-Conduct a comprehensive review of the load balancer configurations across the entire infrastructure.
-Implement stricter change management processes to ensure thorough testing and validation of load balancer changes.
-Enhance monitoring systems to provide real-time visibility into load balancer performance and configuration status.
-Develop a playbook for troubleshooting load balancer-related issues and train the operations team on its usage.
-Conduct post-incident reviews with the engineering and operations teams to share lessons learned and identify areas for improvement.
-By implementing these corrective and preventative measures, we aim to enhance the stability and reliability of the web application service, minimize the occurrence of similar incidents, and improve our incident response capabilities.
-This postmortem provides a detailed analysis of the web stack outage incident, including the impact, root cause, timeline, resolution, and recommendations for improvement. We are committed to learning from this incident and taking proactive steps to ensure a more robust and resilient infrastructure in the future.
+
+1. Organize a comedy intervention for the load balancer, complete with a heartfelt conversation about its responsibilities and a promise of a lifetime supply of debugging tools.
+2. Tighten our change management processes, adding thorough load balancer configuration checks before any deployment.
+3. Elevate our monitoring game by implementing real-time load balancer performance tracking. We'll catch any funny business before it spirals into an encore performance.
 
 
