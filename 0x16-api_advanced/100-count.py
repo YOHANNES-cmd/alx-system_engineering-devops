@@ -1,6 +1,8 @@
 #!/usr/bin/python3
-'''A module containing functions for working with the Reddit API.
 '''
+A module containing functions for working with the Reddit API.
+'''
+
 import requests
 
 
@@ -85,3 +87,8 @@ def count_words(subreddit, word_list, histogram=[], n=0, after=None):
             sort_histogram(histogram)
     else:
         return
+
+
+if __name__ == '__main__':
+    count_words('python', ['react', 'python', 'java', 'javascript', 'scala', 'no_results_for_this_one'])
+
