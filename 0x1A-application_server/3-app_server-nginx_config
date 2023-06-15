@@ -1,23 +1,21 @@
 server {
-    listen 80;
-    listen [::]:80;
+    listen 80 default_server;
+    listen [::]:80 default_server;
 
     root /var/www/html;
     index index.html index.htm index.nginx-debian.html;
 
-    server_name localhost 100.26.49.8;
+    server_name _;
 
     location / {
         try_files $uri $uri/ =404;
     }
 
-    location /airbnb-onepage/ {
-        proxy_pass http://localhost:5000;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
+    location /airbnb-dynamic/number_odd_or_even/ {
+        proxy_pass http://localhost:5001;
     }
 
-    if ($request_filename ~ redirect_me){
+    if ($request_filename ~ redirect_me) {
         rewrite ^ https://sketchfab.com/bluepeno/models permanent;
     }
 
